@@ -1,0 +1,9 @@
+rain_1day
+rain_3day_sum
+temp_3day_avg
+season_wet
+adp_days
+rain_ratio_1to3
+rain_1day_lag1
+rain_1day_lag2
+first_flush_index

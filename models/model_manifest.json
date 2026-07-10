@@ -1,0 +1,18 @@
+{
+  "E. coli": {
+    "model_file": "e_coli_current_best_model.joblib",
+    "info_file": "e_coli_model_info.json",
+    "features_file": "e_coli_features.txt",
+    "binary_threshold": 0.245,
+    "feature_set": "expanded_no_tides",
+    "n_features": 25
+  },
+  "Enterococcus": {
+    "model_file": "enterococcus_current_best_model.joblib",
+    "info_file": "enterococcus_model_info.json",
+    "features_file": "enterococcus_features.txt",
+    "binary_threshold": 0.63,
+    "feature_set": "base_no_sso",
+    "n_features": 9
+  }
+}
