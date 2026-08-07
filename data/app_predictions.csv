@@ -1,0 +1,2 @@
+site_id,site_name,county,prediction_date,data_last_updated,overall_risk,risk_color,safety_message,model_version,e_coli_probability,e_coli_risk,enterococcus_probability,enterococcus_risk
+aquatic_park_san_mateo,"Parkside Aquatic Park, San Mateo",San Mateo,2026-05-26,2026-08-07,Safe,green,Experimental forecast only. Follow official beach advisories and closure notices.,v12,0.06532651840617407,Safe,0.2826029030906372,Safe
