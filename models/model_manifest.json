@@ -1,0 +1,62 @@
+{
+  "pipeline_version": "AquaCast_Model_Pipeline_Version_12",
+  "seed": 42,
+  "dataset_used": "/content/drive/MyDrive/Datasets/Aquacast15Years_Weekly.csv",
+  "generated_at": "2026-08-07T04:43:35",
+  "models": {
+    "E. coli": {
+      "model": "Gradient Boosting",
+      "feature_set": "expanded_no_tides",
+      "locked_threshold": 0.27,
+      "bacteria_threshold_mpn_100ml": 235.0,
+      "features": [
+        "rain_1day",
+        "rain_3day_sum",
+        "rain_1day_lag1",
+        "rain_1day_lag2",
+        "rain_ratio_1to3",
+        "first_flush_index",
+        "temp_3day_avg",
+        "season_wet",
+        "adp_days",
+        "rain_7day_sum",
+        "rain_14day_sum",
+        "rain_3day_max",
+        "rain_7day_max",
+        "rain_14day_max",
+        "rain_intensity_3day",
+        "rain_intensity_7day",
+        "temp_7day_avg",
+        "temp_14day_avg",
+        "temp_7day_min",
+        "temp_7day_max",
+        "wet_season_rain_1day",
+        "rain_temp_interaction_3day",
+        "prev_result_to_threshold_ratio",
+        "prev3_result_to_threshold_ratio_mean",
+        "prev5_result_to_threshold_ratio_mean"
+      ],
+      "model_file": "e_coli_current_best_model.joblib",
+      "feature_file": "e_coli_features.txt"
+    },
+    "Enterococcus": {
+      "model": "Logistic Regression",
+      "feature_set": "base_no_sso",
+      "locked_threshold": 0.63,
+      "bacteria_threshold_mpn_100ml": 130.0,
+      "features": [
+        "rain_1day",
+        "rain_3day_sum",
+        "rain_1day_lag1",
+        "rain_1day_lag2",
+        "rain_ratio_1to3",
+        "first_flush_index",
+        "temp_3day_avg",
+        "season_wet",
+        "adp_days"
+      ],
+      "model_file": "enterococcus_current_best_model.joblib",
+      "feature_file": "enterococcus_features.txt"
+    }
+  }
+}
