@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* ── Global typography & background ── */
+html, body, [class*="css"] {
+    font-family: 'Inter', 'Roboto', 'Open Sans', 'Lato', 'Montserrat', sans-serif !important;
+    background-color: #F5F7FA !important;
+    color: #1A1A2E !important;
+}
+
+/* ── Hide Streamlit default header and footer ── */
+#MainMenu { visibility: hidden; }
+footer { visibility: hidden; }
+header { visibility: hidden; }
+
+/* ── Page content padding ── */
+.block-container {
+    padding-top: 0 !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    max-width: 960px !important;
+}
+
+/* ── Sidebar ── */
+[data-testid="stSidebar"] {
+    background-color: #1A1A2E !important;
+}
+[data-testid="stSidebar"] * {
+    color: #FFFFFF !important;
+}
+[data-testid="stSidebar"] a {
+    color: #FFFFFF !important;
+    text-decoration: none;
+}
+[data-testid="stSidebar"] a:hover {
+    color: #90CAF9 !important;
+}
+
+/* ── Metric chips ── */
+[data-testid="stMetric"] {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* ── Bacteria cards ── */
+.beachguard-card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 1rem;
+}
+
+/* ── Risk badge ── */
+.risk-badge {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #FFFFFF;
+    margin-bottom: 0.5rem;
+}
+.risk-badge.safe    { background-color: #2E7D32; }
+.risk-badge.caution { background-color: #F57F17; }
+.risk-badge.unsafe  { background-color: #C62828; }
+
+/* ── Probability number ── */
+.probability-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1A1A2E;
+    line-height: 1.1;
+}
+
+/* ── Muted caption ── */
+.muted {
+    color: #6B7280;
+    font-size: 0.85rem;
+}
+
+/* ── Map container ── */
+.map-label {
+    font-size: 0.9rem;
+    color: #6B7280;
+    margin-top: 0.5rem;
+}
