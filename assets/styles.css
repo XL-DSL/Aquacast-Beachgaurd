@@ -13,7 +13,7 @@ header { display: none !important; }
 [data-testid="stToolbar"] { display: none !important; }
 [data-testid="stDecoration"] { display: none !important; }
 [data-testid="stStatusWidget"] { display: none !important; }
-.stDeployButton { display: none !important; }
+/* .stDeployButton { display: none !important; } */
 /*[data-testid="collapsedControl"] { display: none !important; } */
 
 /* ── Page background ── */
