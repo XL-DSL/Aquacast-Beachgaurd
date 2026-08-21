@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from datetime import date
 from utils.styles import apply_styles, load_latest, render_hero, badge
+from utils.live_forecast import load_live_latest
 
 st.set_page_config(
     page_title="BeachGuard",
@@ -14,11 +15,48 @@ OFFICIAL_URL = "https://www.smchealth.org/beaches"
 SITE_LAT = 37.5602
 SITE_LON = -122.2910
 
+live_prediction = True
+live_error = None
+
 try:
-    latest = load_latest()
-except Exception:
-    st.error("Prediction data unavailable. Check the official advisory.")
-    st.stop()
+    latest = load_live_latest()
+
+except Exception as exc:
+
+    live_prediction = False
+    live_error = exc
+
+    try:
+        latest = load_latest()
+
+    except Exception:
+        st.error(
+            "Prediction data unavailable. "
+            "Check the official advisory."
+        )
+        st.stop()
+
+render_hero(latest)
+
+if live_prediction:
+
+    st.caption(
+        "Live AquaCast support estimate · "
+        "Open-Meteo weather forecast + "
+        "latest available bacteria monitoring history"
+    )
+
+else:
+
+    st.warning(
+        "Live weather forecast is temporarily unavailable. "
+        "Showing the most recent saved AquaCast prediction."
+    )
+
+    print(
+        "Live AquaCast fallback:",
+        repr(live_error),
+    )
 
 render_hero(latest)
 
