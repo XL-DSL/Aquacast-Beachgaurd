@@ -2,14 +2,28 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
-import joblib
 import numpy as np
 import pandas as pd
 import streamlit as st
+import sklearn
+
+# ------------------------------------------------------------
+# Compatibility fix for older/newer scikit-learn model files
+# that reference the private "_loss" module directly.
+# ------------------------------------------------------------
+
+try:
+    import sklearn._loss._loss as sklearn_loss_core
+    sys.modules.setdefault("_loss", sklearn_loss_core)
+except Exception:
+    pass
+
+import joblib
 
 
 # ============================================================
