@@ -1,20 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 /* ── Reset & base ── */
-html, body, [class*="css"], [class*="st-"] {
-    font-family: 'Inter', 'Roboto', 'Open Sans', 'Lato', 'Montserrat', sans-serif !important;
-    color: #1A1A2E !important;
+html,
+body,
+.stApp {
+    font-family: 'Inter', 'Roboto', 'Open Sans', 'Lato', 'Montserrat', sans-serif;
+    color: #1A1A2E;
 }
 
-/* ── Hide all Streamlit chrome ── */
-#MainMenu { display: none !important; }
-footer { display: none !important; }
-header { display: none !important; }
-[data-testid="stToolbar"] { display: none !important; }
-[data-testid="stDecoration"] { display: none !important; }
-[data-testid="stStatusWidget"] { display: none !important; }
-.stDeployButton { display: none !important; }
-[data-testid="collapsedControl"] { display: none !important; } 
+/* ── Keep Streamlit chrome clean WITHOUT breaking sidebar controls ── */
+#MainMenu {
+    display: none !important;
+}
+
+footer {
+    display: none !important;
+}
+
+/* Do NOT hide the entire header.
+   The sidebar reopen button lives here in newer Streamlit versions. */
+header[data-testid="stHeader"],
+header.stAppHeader {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Hide only the unnecessary Streamlit controls */
+[data-testid="stDecoration"] {
+    display: none !important;
+}
+
+[data-testid="stStatusWidget"] {
+    display: none !important;
+}
+
+.stDeployButton {
+    display: none !important;
+}
+
+/* IMPORTANT:
+   Do not hide collapsedControl / expand-sidebar controls. */
+[data-testid="collapsedControl"],
+[data-testid="stExpandSidebarButton"] {
+    display: flex !important;
+}
 
 /* ── Page background ── */
 .stApp {
