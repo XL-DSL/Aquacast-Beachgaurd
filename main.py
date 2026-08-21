@@ -53,6 +53,11 @@ else:
         "Showing the most recent saved AquaCast prediction."
     )
 
+    st.error(
+        f"Live forecast debug: "
+        f"{type(live_error).__name__}: {live_error}"
+    )
+
     print(
         "Live AquaCast fallback:",
         repr(live_error),
