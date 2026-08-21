@@ -9,11 +9,38 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
 apply_styles()
 
 OFFICIAL_URL = "https://www.smchealth.org/beaches"
 SITE_LAT = 37.5602
 SITE_LON = -122.2910
+
+with st.sidebar:
+    st.markdown("## 🌊 BeachGuard")
+    st.markdown("Experimental water-quality forecast")
+
+    st.divider()
+
+    st.page_link("main.py", label="Current Forecast", icon="🌊")
+    st.page_link("pages/1_Risk_Details.py", label="Risk Details", icon="📊")
+    st.page_link("pages/2_About.py", label="Model & Data", icon="🧪")
+    st.page_link("pages/3_Disclaimer.py", label="Disclaimer", icon="⚠️")
+
+    st.divider()
+
+    st.markdown("### Status Sections")
+    st.caption("AquaCast model forecast")
+    st.caption("Latest lab observation")
+    st.caption("Official advisory status")
+
+    st.divider()
+
+    st.link_button(
+        "Official San Mateo Advisories",
+        OFFICIAL_URL,
+        use_container_width=True
+    )
 
 try:
     latest = load_latest()
@@ -60,8 +87,11 @@ st.markdown(f"""
             <p class="bg-stat-value">{model_ver}</p>
         </div>
     </div>
+
     {freshness_html}
+
     <p class="bg-section-header">Water Quality Risk</p>
+
     <div class="bg-card-row">
         <div class="bg-card {ecoli_cls}">
             <p class="bg-card-name">E. coli</p>
@@ -73,6 +103,7 @@ st.markdown(f"""
                 Safe &lt;10% &nbsp;·&nbsp; Caution 10–50% &nbsp;·&nbsp; Unsafe ≥50%
             </p>
         </div>
+
         <div class="bg-card {entero_cls}">
             <p class="bg-card-name">Enterococcus</p>
             {badge(entero_risk)}
@@ -84,11 +115,13 @@ st.markdown(f"""
             </p>
         </div>
     </div>
+
     <p class="bg-section-header">Pilot Site</p>
 </div>
 """, unsafe_allow_html=True)
 
 col_l, col_c, col_r = st.columns([1, 10, 1])
+
 with col_c:
     map_data = pd.DataFrame({"lat": [SITE_LAT], "lon": [SITE_LON]})
     st.map(map_data, zoom=13)
@@ -101,6 +134,7 @@ st.markdown(f"""
         <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
         Parkside Aquatic Park, San Mateo, California
     </p>
+
     <div class="bg-footer">
         BeachGuard &nbsp;·&nbsp; Experimental research prototype &nbsp;·&nbsp;
         <a href="{OFFICIAL_URL}" target="_blank" style="color:#6B7280;">Official Advisories</a>
