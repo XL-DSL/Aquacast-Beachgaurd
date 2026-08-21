@@ -38,33 +38,6 @@ except Exception as exc:
 
 render_hero(latest)
 
-if live_prediction:
-
-    st.caption(
-        "Live AquaCast support estimate · "
-        "Open-Meteo weather forecast + "
-        "latest available bacteria monitoring history"
-    )
-
-else:
-
-    st.warning(
-        "Live weather forecast is temporarily unavailable. "
-        "Showing the most recent saved AquaCast prediction."
-    )
-
-    st.error(
-        f"Live forecast debug: "
-        f"{type(live_error).__name__}: {live_error}"
-    )
-
-    print(
-        "Live AquaCast fallback:",
-        repr(live_error),
-    )
-
-render_hero(latest)
-
 prediction_date = latest["prediction_date"]
 updated_date = latest["data_last_updated"]
 updated_str = updated_date.strftime("%b %d, %Y") if pd.notna(updated_date) else "Unknown"
@@ -86,7 +59,7 @@ if pd.notna(updated_date):
     elif days_old > 3:
         freshness_html = f'<div class="bg-freshness error">Outdated data — last updated {updated_date.strftime("%b %d, %Y")}.</div>'
 
-st.markdown(f"""
+st.html(f"""
 <div class="bg-content">
     <div class="bg-stat-row">
         <div class="bg-stat">
@@ -128,7 +101,7 @@ st.markdown(f"""
     </div>
     <p class="bg-section-header">Pilot Site</p>
 </div>
-""", unsafe_allow_html=True)
+""")
 
 col_l, col_c, col_r = st.columns([1, 10, 1])
 with col_c:
